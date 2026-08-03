@@ -56,6 +56,12 @@ cx-page-slot.EmptyCartMiddleContent {
   }
 }
 
+// カートページ差し込みボタン(標準のボタン変数 --cx-color-primary を継承)
+.app-cart-actions {
+  text-align: center;
+  margin: 1.5rem auto 3rem;
+}
+
 // 学習用カスタムコンポーネントのスタイル(コンポーネントはCSSを持たず、
 // グローバルSCSSに書くのがSpartacus流)
 .app-demo-bar {

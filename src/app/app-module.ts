@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from '@spartacus/storefront';
 
 import { App } from './app';
+import { CartActionsModule } from './custom/cart-actions/cart-actions.module';
 import { DemoBarModule } from './custom/demo-bar/demo-bar.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
 
@@ -17,6 +18,7 @@ import { SpartacusModule } from './spartacus/spartacus.module';
     AppRoutingModule,
     SpartacusModule,
     DemoBarModule,
+    CartActionsModule,
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
