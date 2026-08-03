@@ -28,3 +28,13 @@ $useLatestStyles: true;
 // :root {
 //   --cx-color-primary: #0f4880;
 // }
+
+// 学習用カスタムコンポーネントのスタイル(コンポーネントはCSSを持たず、
+// グローバルSCSSに書くのがSpartacus流)
+.app-demo-bar {
+  background: #0f4880;
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  text-align: center;
+}

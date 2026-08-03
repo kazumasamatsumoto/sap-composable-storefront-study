@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from '@spartacus/storefront';
 
 import { App } from './app';
+import { DemoBarModule } from './custom/demo-bar/demo-bar.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SpartacusModule } from './spartacus/spartacus.module';
     EffectsModule.forRoot([]),
     AppRoutingModule,
     SpartacusModule,
+    DemoBarModule,
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
