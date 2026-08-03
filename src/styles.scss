@@ -24,10 +24,37 @@ $useLatestStyles: true;
 // ORDER IMPORTANT: Spartacus styles last
 @import '@spartacus/styles';
 
+// feature 別スタイル(cart)。実プロジェクトでは ng add が同等の取り込みを生成する
+@import '@spartacus/cart/index';
+
 // ---- ここから自分の上書き(ブランドカラー等)----
 // :root {
 //   --cx-color-primary: #0f4880;
 // }
+
+// カートページ: 空カートメッセージをカード風に整える(手順書ケースAの実例。
+// 標準部品の上書きは Material のテーマ上書きと同じ「グローバルCSSで後勝ち」方式)
+cx-page-slot.EmptyCartMiddleContent {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  background: #f6f8fa;
+  border: 1px solid #e1e7ed;
+  border-radius: 12px;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #556;
+  }
+}
 
 // 学習用カスタムコンポーネントのスタイル(コンポーネントはCSSを持たず、
 // グローバルSCSSに書くのがSpartacus流)
