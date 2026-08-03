@@ -56,18 +56,8 @@ cx-page-slot.EmptyCartMiddleContent {
   }
 }
 
-// カートページ差し込みボタン(標準のボタン変数 --cx-color-primary を継承)
-.app-cart-actions {
-  text-align: center;
-  margin: 1.5rem auto 3rem;
-}
-
-// 学習用カスタムコンポーネントのスタイル(コンポーネントはCSSを持たず、
-// グローバルSCSSに書くのがSpartacus流)
-.app-demo-bar {
-  background: #0f4880;
-  color: #fff;
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  text-align: center;
-}
+// ── 線引きのルール ─────────────────────────────────────────────
+// ・自作コンポーネント固有のスタイル → 各コンポーネントの .scss へ(通常のAngular)
+// ・SAP の標準部品への上書き(上の EmptyCartMiddleContent のような cx-* 系)
+//   → このグローバル SCSS へ(node_modules 内は編集できないため外から上書き)
+// ────────────────────────────────────────────────────────────

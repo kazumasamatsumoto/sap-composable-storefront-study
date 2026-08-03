@@ -1,0 +1,7 @@
+.app-cart-actions {
+  text-align: center;
+  margin: 1.5rem auto 3rem;
+
+  // .btn / .btn-primary の見た目自体はグローバル(@spartacus/styles)から来る。
+  // ここに書くのは「この部品固有」のスタイルだけ
+}

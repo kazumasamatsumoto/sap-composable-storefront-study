@@ -4,20 +4,16 @@ import { Observable, map } from 'rxjs';
 
 /**
  * 学習用の最初のカスタムコンポーネント。
- * mystore の app 層に「DI・ライフサイクル・RxJS」が登場するのはここから。
+ * TS / HTML / SCSS の3ファイル分離 — 自作コンポーネントは通常の Angular 開発と同じ形。
  * - DI: constructor で facade(ActiveCartFacade)を注入
  * - RxJS: facade が返す Observable を async パイプで表示
- * - ライフサイクル: ngOnInit / ngOnDestroy は通常の Angular どおり動く
+ * - ライフサイクル: ngOnInit / ngOnDestroy は通常どおり動く
  */
 @Component({
   selector: 'app-demo-bar',
   standalone: false,
-  template: `
-    <div class="app-demo-bar">
-      学習用カスタムコンポーネント(outlet 差し込み)— カート内点数:
-      <strong>{{ totalItems$ | async }}</strong>
-    </div>
-  `,
+  templateUrl: './demo-bar.component.html',
+  styleUrl: './demo-bar.component.scss',
 })
 export class DemoBarComponent implements OnInit, OnDestroy {
   totalItems$: Observable<number>;

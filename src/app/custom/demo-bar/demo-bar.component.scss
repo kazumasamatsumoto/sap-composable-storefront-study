@@ -1,0 +1,10 @@
+// 自作コンポーネントのスタイルは通常の Angular どおりコンポーネントに持たせてよい
+// (ViewEncapsulation も普通に効く。グローバル SCSS が必須なのは
+//  「SAP の標準部品を外から上書きする」ときだけ)
+.app-demo-bar {
+  background: #0f4880;
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  text-align: center;
+}
