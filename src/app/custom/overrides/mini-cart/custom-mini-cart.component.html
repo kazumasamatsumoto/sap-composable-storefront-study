@@ -1,0 +1,22 @@
+<!-- 標準 mini-cart.component.html ベース。変更点: 数量バッジ(.qty-badge)を追加 -->
+<a
+  *ngIf="{ quantity: quantity$ | async } as data"
+  [attr.aria-label]="'miniCart.item' | cxTranslate: { count: data.quantity }"
+  [title]="'miniCart.item' | cxTranslate: { count: data.quantity }"
+  [routerLink]="{ cxRoute: 'cart' } | cxUrl"
+>
+  <span class="icon-wrap">
+    <cx-icon [type]="iconTypes.CART"></cx-icon>
+    <span class="qty-badge" *ngIf="(data.quantity ?? 0) > 0" aria-hidden="true">
+      {{ data.quantity }}
+    </span>
+  </span>
+
+  <span class="total">
+    {{ 'miniCart.total' | cxTranslate: { total: total$ | async } }}
+  </span>
+
+  <span class="count">
+    {{ 'miniCart.count' | cxTranslate: { count: data.quantity } }}
+  </span>
+</a>

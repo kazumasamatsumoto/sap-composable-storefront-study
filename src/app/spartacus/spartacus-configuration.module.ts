@@ -34,7 +34,7 @@ import { environment } from '../../environments/environment';
     provideConfig(<SiteContextConfig>{
       context: {
         urlParameters: ['baseSite', 'language', 'currency'],
-        baseSite: ['electronics-spa'],
+        baseSite: ['powertools-spa'],
         currency: ['USD'],
         language: ['en'],
       },

@@ -1,0 +1,28 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.digits {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.expired {
+  font-weight: 700;
+  color: #bb0000;
+}
+
+.cta {
+  border: 1px solid #107e3e;
+  border-radius: 4px;
+  background: #107e3e;
+  color: #fff;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #0c6231;
+  }
+}

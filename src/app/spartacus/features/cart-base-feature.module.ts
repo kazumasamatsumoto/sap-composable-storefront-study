@@ -22,10 +22,12 @@ import { CmsConfig, I18nConfig, provideConfig } from '@spartacus/core';
             import('@spartacus/cart/base').then((m) => m.CartBaseModule),
         },
         [MINI_CART_FEATURE]: {
+          // 標準の MiniCartModule ではなく、上書き込みのラッパーモジュールを lazy import する
+          // (lazy 機能内の差し替え作法。custom-mini-cart.module.ts のコメント参照)
           module: () =>
-            import('@spartacus/cart/base/components/mini-cart').then(
-              (m) => m.MiniCartModule
-            ),
+            import(
+              '../../custom/overrides/mini-cart/custom-mini-cart.module'
+            ).then((m) => m.CustomMiniCartModule),
         },
         [ADD_TO_CART_FEATURE]: {
           module: () =>

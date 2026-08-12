@@ -1,0 +1,16 @@
+@if (total() > 0) {
+  <div class="free-shipping-hint">
+    @if (reached()) {
+      <span class="reached">送料無料の条件を満たしています</span>
+    } @else {
+      <span>
+        あと
+        <strong>{{ remaining() | currency: currency() }}</strong>
+        で送料無料
+      </span>
+    }
+    <span class="bar" aria-hidden="true">
+      <span class="fill" [style.width.%]="progress()"></span>
+    </span>
+  </div>
+}

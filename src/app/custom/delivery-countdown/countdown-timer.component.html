@@ -1,0 +1,12 @@
+@if (expired()) {
+  <span class="expired">{{ expiredMessage() }}</span>
+} @else {
+  <span class="timer" role="timer">
+    <span class="digits">{{ hours() | number: '2.0-0' }}</span>:<span class="digits">{{ minutes() | number: '2.0-0' }}</span>:<span class="digits">{{ seconds() | number: '2.0-0' }}</span>
+  </span>
+  @if (ctaLabel()) {
+    <button type="button" class="cta" (click)="ctaClick.emit()">
+      {{ ctaLabel() }}
+    </button>
+  }
+}

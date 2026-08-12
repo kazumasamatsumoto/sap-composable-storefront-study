@@ -1,0 +1,17 @@
+:host {
+  position: relative;
+}
+
+.migration-badge {
+  position: absolute;
+  top: 0.5rem;
+  inset-inline-start: 0.5rem;
+  z-index: 1;
+  padding: 0.15rem 0.6rem;
+  border-radius: 2px;
+  background: rgba(10, 110, 209, 0.9);
+  color: #fff;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}

@@ -1,0 +1,20 @@
+.icon-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.qty-badge {
+  position: absolute;
+  top: -0.45rem;
+  inset-inline-end: -0.55rem;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.2rem;
+  border-radius: 0.5rem;
+  background: #e9730c;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1rem;
+  text-align: center;
+}

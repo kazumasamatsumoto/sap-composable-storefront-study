@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+.free-shipping-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: #0a2540;
+
+  .reached {
+    color: #107e3e;
+    font-weight: 700;
+  }
+
+  .bar {
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    background: #d5dde5;
+    overflow: hidden;
+
+    .fill {
+      display: block;
+      height: 100%;
+      background: #107e3e;
+      transition: width 0.3s ease;
+    }
+  }
+}

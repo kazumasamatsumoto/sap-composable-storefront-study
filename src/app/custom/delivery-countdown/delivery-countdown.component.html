@@ -1,0 +1,14 @@
+@if (data(); as cms) {
+  <aside class="delivery-countdown">
+    <strong class="title">{{ cms.title }}</strong>
+    <app-countdown-timer
+      [remainingMs]="remainingMs()"
+      [expiredMessage]="cms.expiredMessage ?? ''"
+      [ctaLabel]="cms.ctaLabel ?? ''"
+      (ctaClick)="onCtaClick()"
+    />
+    @if (cms.shippingNote) {
+      <span class="note">{{ cms.shippingNote }}</span>
+    }
+  </aside>
+}

@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  line-height: 1;
+}
+
+.cms-type-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid rgba(10, 110, 209, 0.4);
+  border-radius: 2px;
+  background: rgba(10, 110, 209, 0.08);
+  color: #0a6ed1;
+  font-family: monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+}
