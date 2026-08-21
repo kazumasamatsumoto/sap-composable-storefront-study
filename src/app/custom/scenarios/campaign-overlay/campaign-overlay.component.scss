@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  /* 高さ0にして、次に描画されるバナーの上に重ねる */
+  height: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.campaign-overlay {
+  position: absolute;
+  top: 0.75rem;
+  inset-inline-start: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: calc(100% - 1.5rem);
+  padding: 0.4rem 0.75rem 0.4rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(10, 37, 64, 0.88);
+  color: #fff;
+  font-size: 0.8125rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.24);
+  pointer-events: none;
+
+  .badge {
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: #e9730c;
+    font-weight: 700;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .message {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

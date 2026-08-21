@@ -1,0 +1,24 @@
+<!-- 標準 banner.component.html をベースに、モダンなカード表現へ再構成 -->
+<ng-container *ngIf="data$ | async as data">
+  <div class="modern-banner">
+    <div class="media-wrap">
+      <cx-media [container]="getImage(data)" [elementType]="'picture'"></cx-media>
+      <span class="overlay" aria-hidden="true"></span>
+    </div>
+
+    <div class="caption" *ngIf="data.headline || data.content">
+      <p class="headline" *ngIf="data.headline" [innerHTML]="data.headline"></p>
+      <p class="content" *ngIf="data.content" [innerHTML]="data.content"></p>
+    </div>
+
+    <cx-generic-link
+      *ngIf="routerLink"
+      class="stretched"
+      [url]="routerLink"
+      [target]="getTarget(data)"
+      [ariaLabel]="getLinkAriaLabel(data)"
+      [attr.title]="!data.headline ? getImageAltText(data) : null"
+    >
+    </cx-generic-link>
+  </div>
+</ng-container>

@@ -1,0 +1,97 @@
+:host {
+  display: block;
+  /* 標準の cx-banner は幅指定を持たないことがある。
+     グリッド内で潰れないよう明示する */
+  width: 100%;
+}
+
+.modern-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #0a2540;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(16, 24, 40, 0.08), 0 16px 32px rgba(16, 24, 40, 0.14);
+
+    :host-context(.no-motion) & { transform: none; }
+    .media-wrap ::ng-deep img { transform: scale(1.04); }
+  }
+
+  .media-wrap {
+    position: relative;
+    line-height: 0;
+
+    /* cx-media は <picture><img> を出す。picture 自体もブロック化しないと
+       高さが出ずに潰れて見える */
+    ::ng-deep cx-media,
+    ::ng-deep picture {
+      display: block;
+      width: 100%;
+    }
+
+    /* 画像の高さは img 自身のアスペクト比で決める。
+       cx-media が高さを持たない構成(styles の読み込み差)でも潰れないよう
+       height:auto を明示し、img をブロック化する */
+    ::ng-deep img {
+      width: 100%;
+      height: auto !important;
+      min-height: 1px;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 37, 64, 0) 45%, rgba(10, 37, 64, 0.78) 100%);
+    pointer-events: none;
+  }
+
+  .caption {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    padding: 1.25rem 1.5rem;
+    color: #fff;
+    pointer-events: none;
+
+    /* CMS 側が空の headline/content を返すケースでは何も出さない */
+    &:empty { display: none; }
+  }
+
+  .headline {
+    margin: 0 0 0.25rem;
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .content {
+    margin: 0;
+    font-size: 0.875rem;
+    opacity: 0.92;
+  }
+
+  /* リンクを面全体に広げる(テキストは pointer-events:none なのでクリックを通す) */
+  .stretched ::ng-deep a {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+}
+
+/* 動きを減らす設定のユーザーにはアニメーションを無効化 */
+@media (prefers-reduced-motion: reduce) {
+  .modern-banner,
+  .modern-banner .media-wrap ::ng-deep img {
+    transition: none;
+  }
+  .modern-banner:hover { transform: none; }
+  .modern-banner:hover .media-wrap ::ng-deep img { transform: none; }
+}

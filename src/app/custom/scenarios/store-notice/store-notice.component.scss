@@ -1,0 +1,30 @@
+.store-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  margin: 0 0 1rem;
+  border-inline-start: 4px solid;
+  border-radius: 4px;
+  font-size: 0.875rem;
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .text { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
+  .headline { white-space: nowrap; }
+  .link { margin-inline-start: auto; white-space: nowrap; text-decoration: underline; }
+
+  &.tone-info    { border-color: #0a6ed1; background: #e8f2fb; .icon { background: #0a6ed1; } }
+  &.tone-warning { border-color: #e9730c; background: #fdf3e7; .icon { background: #e9730c; } }
+  &.tone-success { border-color: #107e3e; background: #e9f5ec; .icon { background: #107e3e; } }
+}

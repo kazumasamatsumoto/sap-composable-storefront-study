@@ -1,0 +1,12 @@
+<aside class="store-notice" [class]="'tone-' + tone()">
+  <span class="icon" aria-hidden="true">
+    @switch (tone()) { @case ('warning') { ! } @case ('success') { ✓ } @default { i } }
+  </span>
+  <div class="text">
+    <strong class="headline">{{ headline() }}</strong>
+    <span class="body">{{ body() }}</span>
+  </div>
+  @if (linkUrl()) {
+    <a class="link" [href]="linkUrl()">{{ linkLabel() }}</a>
+  }
+</aside>
