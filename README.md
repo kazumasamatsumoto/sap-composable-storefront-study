@@ -56,6 +56,23 @@ npm start                        # http://localhost:4200
 5. 次の一歩: 学習サイトの演習ドリル(コンポーネント差し替え・Outlet・カスタム API)を
    このリポジトリ上で実施する
 
+## CMS型名バッジの ON / OFF
+
+画面上の全部品に CMS 型名ラベルを出す仕掛け(`src/app/custom/all-components/`)。
+移行の Gap 分析で「この部品はどの CMS 型か」を実機確認するのに使う。
+
+**① 既定値**(`src/environments/environment.ts`):
+```ts
+labelCmsComponents: true,
+```
+
+**② 実行時に切り替える**(再ビルド不要。DevTools Console で実行してリロード。①より優先):
+```js
+localStorage.setItem('cx-label-components', 'on');   // 表示
+localStorage.setItem('cx-label-components', 'off');  // 非表示
+localStorage.removeItem('cx-label-components');      // environment の設定に戻す
+```
+
 ## 制約(既知)
 
 - feature の SCSS(`@spartacus/styles` 以外の機能別スタイル)は未取込。カート等の一部画面は
