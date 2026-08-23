@@ -43,7 +43,7 @@
 find . -path '*/.github/workflows/*'  → 0件
 ```
 
-`iac/terraform/github_oidc.tf` は OIDC プロバイダと `celes-poc-github-deploy` ロールを定義しており、**AWS側の受け口は用意されている**。ECR push + ECS デプロイ4アクションの権限も付いている。
+`iac/terraform/github_oidc.tf` は OIDC プロバイダと `customer-poc-github-deploy` ロールを定義しており、**AWS側の受け口は用意されている**。ECR push + ECS デプロイ4アクションの権限も付いている。
 
 しかし**「マージしたら動く」部分が実装されていない**。CI/CDの本体が無い。
 
@@ -167,7 +167,7 @@ if ( $available_user_discount <= 0 ) { return 0; }
 現行の WooCommerce は **6.3.1**。同梱 Blocks の `src/` を検索した結果:
 
 ```
-grep -rn 'Cart-Token' celes-ec/.../woocommerce-blocks/src/  → 0件
+grep -rn 'Cart-Token' customer-ec/.../woocommerce-blocks/src/  → 0件
 ```
 
 **`Cart-Token` は存在しない。** セッション同定は `wp_woocommerce_session_*` cookie のみで、
@@ -176,10 +176,10 @@ grep -rn 'Cart-Token' celes-ec/.../woocommerce-blocks/src/  → 0件
 **そして、既存の提案文書がこれを前提に書かれている。**
 
 ```
-celes-spec/research/wip/proposal/headless-migration-proposal.md:86
+customer-spec/research/wip/proposal/headless-migration-proposal.md:86
   「カートをサーバーセッションではなく cart_token(Nonce ベースの JWT)で管理するため、
     ヘッドレスに親和性が高い」
-celes-spec/research/wip/proposal/headless-migration-proposal.md:271
+customer-spec/research/wip/proposal/headless-migration-proposal.md:271
   「WooCommerce Store API はカートを cart_token(Nonce ベースの JWT)で識別する」
 ```
 
@@ -374,11 +374,11 @@ git リポジトリが無いため、以下を決める必要がある。
 
 - モノレポか、`poc-front` / `iac` / WP を分けるか
 - main / product ブランチの運用(どちらが何にデプロイされるか)
-- **既存の本番コード `celes-ec`(読み取り専用)をどう扱うか**
+- **既存の本番コード `customer-ec`(読み取り専用)をどう扱うか**
 
 ### 判断5 S3読み取り権限の追加申請【要判断・外部依存】
 
-データ投入をS3経由にするなら、`celes-poc-boundary` にS3系Allowの追加申請が必要。
+データ投入をS3経由にするなら、`customer-poc-boundary` にS3系Allowの追加申請が必要。
 現状のポリシーには無い。**申請のリードタイムを考えると早めに出すべき。**
 
 ---
@@ -500,7 +500,7 @@ git リポジトリが無いため、以下を決める必要がある。
 
 ### 10-3. 依頼台帳が実態と乖離している
 
-`シュウエイ依頼タスクリスト.csv`(最終更新 07-27)は4件すべて「未依頼」だが:
+`外部依頼タスクリスト.csv`(最終更新 07-27)は4件すべて「未依頼」だが:
 
 | No. | 内容 | CSV | 実態 |
 |---|---|---|---|
@@ -536,10 +536,10 @@ PoC計画書349行目に「サンドボックス資格情報の入手リード�
 2. SICS管理画面(admin.sd-lines.com)の閲覧・設定権限
 3. **SICS継続可否(Q12)の督促** — 08-04から19日待ち。**最優先の律速**
 4. WooCommerce Subscriptions のライセンス所在
-5. Route53レコードの発行主体(`PoC開発用AWS構成_概算.md:161`「シュウエイ様アカウント」)
+5. Route53レコードの発行主体(`PoC開発用AWS構成_概算.md:161`「外部様アカウント」)
 6. **S3読み取り権限の boundary への追加**(判断5)
 
-**あわせて `シュウエイ依頼タスクリスト.csv` を「依頼日」列付きで作り直す**(現状は待機日数が追えない)。
+**あわせて `外部依頼タスクリスト.csv` を「依頼日」列付きで作り直す**(現状は待機日数が追えない)。
 
 ---
 
@@ -602,7 +602,7 @@ Checkoutブロックのレンダリング中に一時的に有効化し、直後
 | `iac/terraform/variables.tf` | 40行 | `desired_count = 1` → **2以上**(G1のダウンタイム要件) |
 | 同上 | 82行 | `budget_limit_usd = 15` → 40〜50 |
 | `iac/terraform/ecs.tf` | サービス定義 | **deployment_minimum_healthy_percent 等が未指定**(2-2) |
-| **`celes-spec/.../headless-migration-proposal.md`** | **86, 271行** | **`cart_token` を前提に「ヘッドレスに親和性が高い」と記載。WooCommerce 6.3.1 には存在しない**(→4-3)。提案の論拠に関わるため優先度が高い |
+| **`customer-spec/.../headless-migration-proposal.md`** | **86, 271行** | **`cart_token` を前提に「ヘッドレスに親和性が高い」と記載。WooCommerce 6.3.1 には存在しない**(→4-3)。提案の論拠に関わるため優先度が高い |
 
 ---
 
